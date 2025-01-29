@@ -23,7 +23,7 @@ class menuWindow(ctk.CTk):
         headers = ["Config Name", "Variables", "Plots", "Baud Rate", "COM Port", "CSV File"]
         for col, header in enumerate(headers):
             label = ctk.CTkLabel(self, text=header)
-            label.grid(row=1, column=col, sticky="w")
+            label.grid(row=1, column=col, sticky="ew")
 
         #Create Scroll Frame for Search Results
         self.scrollFrame = ctk.CTkScrollableFrame(self)
