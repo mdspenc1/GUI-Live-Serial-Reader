@@ -15,19 +15,19 @@ class menuWindow(ctk.CTk):
         self.geometry("700x450")
         self.resizable(True, True)
 
+        #Row & Column Configuration
+        self.grid_rowconfigure((0, 1, 2), weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
         #Create Entry Box for Search Bar
         self.entryBox = ctk.CTkEntry(self, placeholder_text="Search for configuration...")
-        self.entryBox.pack(fill="x")
+        self.entryBox.grid(fill="x", row=0)
 
         #Create Header for Results Box
         headers = ["Config Name", "Variables", "Plots", "Baud Rate", "COM Port", "CSV File"]
         for col, header in enumerate(headers):
             label = ctk.CTkLabel(self, text=header)
-            label.grid(row=1, column=col, sticky="ew")
-
-        #Create Scroll Frame for Search Results
-        self.scrollFrame = ctk.CTkScrollableFrame(self)
-        self.scrollFrame.pack()
+            label.grid(row=1, column=col, sticky="ew", fill="x")
 
         #Creates Self Configuration List to Create Configuration Buttons Later
         self.configs = configurations
@@ -37,6 +37,13 @@ class menuWindow(ctk.CTk):
 
         #Bind Entry Box to Update Function
         self.entryBox.bind("<KeyRelease>", self.updateFrame)
+
+        #Find Number of Filtered Results
+        resultNum = self.resultNumber(self)
+
+        #Create Scroll Frame for Search Results
+        self.scrollFrame = ctk.CTkScrollableFrame(self)
+        self.scrollFrame.grid(row=2, column=0, rowspan=resultNum+1, fill="x")
     
     def populateFrame(self, configs):
         #Clear Existing Configurations from Scrollable Frame
@@ -65,6 +72,17 @@ class menuWindow(ctk.CTk):
 
         #Update Scrollable Frame with Filtered Configs
         self.populateFrame(filteredConfigs)
+
+    def resultNumber(self):
+        #Obtain Text in Entry Box as Lowercase
+        searchText = self.entryBox.get().lower()
+
+        #Filter Configurations Based on Entry
+        filteredConfigs = [config for config in self.configs if searchText in config.configuration_name.lower()]
+
+        #Return Number of Filtered Results
+        resultNum = len(filteredConfigs)
+        return resultNum
 
     def openConfiguration(self, name):
         self.destroy()
