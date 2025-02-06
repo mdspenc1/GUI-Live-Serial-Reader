@@ -1,90 +1,96 @@
 import customtkinter as ctk
-import tkinter as tk
-from configuration import configuration
-from configuration import configurations
+from configuration import configuration, configurations
 
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("dark-blue")
 
-class menuWindow(ctk.CTk):
+class MenuWindow(ctk.CTk):
     def __init__(self):
         super().__init__()
-        global configurations
-
-        self.title("Live Series Reader - Main Menu")
+        self.title("Live Serial Reader - Main Menu")
         self.geometry("700x450")
         self.resizable(True, True)
 
-        #Row & Column Configuration
-        self.grid_rowconfigure((0, 1, 2), weight=1)
+        # Make sure main window columns expand properly
         self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(2, weight=1)  # Scrollable area should expand
 
-        #Create Entry Box for Search Bar
+        # Search Entry
         self.entryBox = ctk.CTkEntry(self, placeholder_text="Search for configuration...")
-        self.entryBox.grid(fill="x", row=0)
-
-        #Create Header for Results Box
-        headers = ["Config Name", "Variables", "Plots", "Baud Rate", "COM Port", "CSV File"]
-        for col, header in enumerate(headers):
-            label = ctk.CTkLabel(self, text=header)
-            label.grid(row=1, column=col, sticky="ew", fill="x")
-
-        #Creates Self Configuration List to Create Configuration Buttons Later
-        self.configs = configurations
-
-        #Initially Populate Scrollable Frame with All Configurations
-        self.populateFrame(self.configs)
-
-        #Bind Entry Box to Update Function
+        self.entryBox.grid(row=0, column=0, padx=20, sticky="ew", pady=10)
         self.entryBox.bind("<KeyRelease>", self.updateFrame)
 
-        #Find Number of Filtered Results
-        resultNum = self.resultNumber(self)
+        # Headers
+        headers = ["Config Name", "Variables", "Plots", "Baud Rate", "COM Port", "CSV File"]
+        header_font = ctk.CTkFont(family="Helvetica", size=12, weight="bold")
 
-        #Create Scroll Frame for Search Results
-        self.scrollFrame = ctk.CTkScrollableFrame(self)
-        self.scrollFrame.grid(row=2, column=0, rowspan=resultNum+1, fill="x")
-    
+        self.header_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.header_frame.grid(row=1, column=0, sticky="ew", padx=10)
+
+        # Configure columns in header frame
+        for i in range(len(headers)):
+            self.header_frame.grid_columnconfigure(i, weight=1)
+
+        for col, header in enumerate(headers):
+            label = ctk.CTkLabel(self.header_frame, text=header, font=header_font)
+            label.grid(row=0, column=col, sticky="ew", padx=5)
+
+        # Scrollable Frame for search results
+        self.scrollFrame = ctk.CTkScrollableFrame(self, fg_color="gray")
+        self.scrollFrame.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
+
+        # Ensure the scroll frame's columns align properly
+        for i in range(len(headers)):
+            self.scrollFrame.grid_columnconfigure(i, weight=1)
+
+        # Store configuration list
+        self.configs = configurations
+
+        # Populate Scrollable Frame initially
+        self.populateFrame(self.configs)
+
     def populateFrame(self, configs):
-        #Clear Existing Configurations from Scrollable Frame
+        """ Populate scrollable frame with configuration buttons and labels """
+        # Clear existing widgets
         for widget in self.scrollFrame.winfo_children():
             widget.destroy()
 
-        #Add Filtered Configurations to Scrollable Frame
-        for config in configs:
-            name = config.configuration_name
-            serialVars = str(config.serial_variables)
-            plots = str(config.plots)
-            baud = str(config.baud_rate)
-            comPort = "COM" + str(config.com_port)
-            csvFile = config.csv_file
-            configParameters = [name, serialVars, plots, baud, comPort, csvFile]
-            configText = " ".join(configParameters)
-            button = ctk.CTkButton(self.scrollFrame, text=configText, command=lambda: self.openConfiguration(name))
-            button.pack()
+        label_font = ctk.CTkFont(family="Helvetica", size=12)
 
-    def updateFrame(self, event):
-        #Obtain Text in Entry Box as Lowercase
+        for row_idx, config in enumerate(configs):
+            parameters = [
+                config.configuration_name,
+                str(config.serial_variables),
+                str(config.plots),
+                str(config.baud_rate),
+                f"COM{config.com_port}",
+                config.csv_file
+            ]
+
+            for col, parameter in enumerate(parameters):
+                label = ctk.CTkLabel(self.scrollFrame, text=parameter, font=label_font)
+                label.grid(row=row_idx * 2, column=col, sticky="ew", padx=5)
+                if parameter == parameters[0]:
+                    label.bind("<Button-1>", lambda event, name=config.configuration_name: self.openConfiguration(name))
+                    label.configure(cursor="hand2")
+
+        row_count = len(self.scrollFrame.grid_slaves())
+        button = ctk.CTkButton(self.scrollFrame, text="+ Create New Configuration", command=self.openNewConfiguration)
+        button.grid(row=row_count, column=0, columnspan=self.scrollFrame.grid_size()[0])
+
+    def updateFrame(self, event=None):
+        """ Filter results and update scrollable frame """
         searchText = self.entryBox.get().lower()
-        
-        #Filter Configurations Based on Entry
         filteredConfigs = [config for config in self.configs if searchText in config.configuration_name.lower()]
-
-        #Update Scrollable Frame with Filtered Configs
         self.populateFrame(filteredConfigs)
 
-    def resultNumber(self):
-        #Obtain Text in Entry Box as Lowercase
-        searchText = self.entryBox.get().lower()
-
-        #Filter Configurations Based on Entry
-        filteredConfigs = [config for config in self.configs if searchText in config.configuration_name.lower()]
-
-        #Return Number of Filtered Results
-        resultNum = len(filteredConfigs)
-        return resultNum
+    def openNewConfiguration(self):
+        """ Opens window for creating new configuration """
+        self.destroy()
+        open_new_configuration_window()
 
     def openConfiguration(self, name):
+        """ Open a configuration window """
         self.destroy()
         open_configuration_window(name)
 
@@ -93,6 +99,11 @@ def open_configuration_window(name):
     config_win = configurationWindow(name)
     config_win.mainloop()
 
+def open_new_configuration_window():
+    from create_configuration_window import createConfigurationWindow
+    new_config_win = createConfigurationWindow
+    new_config_win.mainloop()
+
 if __name__ == "__main__":
-    MenuWindow = menuWindow()
+    MenuWindow = MenuWindow()
     MenuWindow.mainloop()
