@@ -1,0 +1,24 @@
+[
+    {
+        "configuration_name": "Thermal Draw",
+        "serial_variables": [],
+        "plots": 0,
+        "baud_rate": 0,
+        "com_port": 0,
+        "csv_file": "No File"
+    },
+    {
+        "configuration_name": "test",
+        "serial_variables": [
+            {
+                "variable_number": 0,
+                "variable_name": "var0",
+                "variable_units": "mm/min"
+            }
+        ],
+        "plots": 0,
+        "baud_rate": 0,
+        "com_port": 0,
+        "csv_file": "No File"
+    }
+]
