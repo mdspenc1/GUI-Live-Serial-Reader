@@ -1,0 +1,16 @@
+{
+    "running": false,
+    "serial_values": [],
+    "plot_dict": [],
+    "exit_gui": false,
+    "update_gui_plots": false,
+    "generate_gui_plots": true,
+    "validate_port_settings": false,
+    "obtain_serial_data": false,
+    "plot_serial_data": false,
+    "update_config_to_json": false,
+    "skip_to_beginning": false,
+    "gui": "requested",
+    "backend": "waiting",
+    "designated_author": "gui"
+}
