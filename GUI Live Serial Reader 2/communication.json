@@ -1,0 +1,322 @@
+{
+    "running": false,
+    "serial_values": [],
+    "plot_dict": [
+        [
+            {
+                "lines": [
+                    {
+                        "x_serial": {
+                            "variable_number": 0,
+                            "variable_name": "time",
+                            "variable_units": "s",
+                            "data_array": []
+                        },
+                        "y_serial": {
+                            "variable_number": 1,
+                            "variable_name": "draw speed",
+                            "variable_units": "mm/min",
+                            "data_array": []
+                        },
+                        "color": "red",
+                        "linewidth": 2.0,
+                        "linestyle": "-",
+                        "marker": "None",
+                        "markersize": 6.0,
+                        "markeredgewidth": 1.0,
+                        "markeredgecolor": "red",
+                        "markerfacecolor": "yellow",
+                        "markerfacecoloralt": "none",
+                        "label": "draw speed",
+                        "gapcolor": null,
+                        "fillstyle": "full",
+                        "antialiased": false,
+                        "dash_capstyle": "butt",
+                        "solid_capstyle": "butt",
+                        "dash_joinstyle": "round",
+                        "solid_joinstyle": "miter",
+                        "pickradius": 5.0,
+                        "drawstyle": "default",
+                        "markevery": null
+                    },
+                    {
+                        "x_serial": {
+                            "variable_number": 0,
+                            "variable_name": "time",
+                            "variable_units": "s",
+                            "data_array": []
+                        },
+                        "y_serial": {
+                            "variable_number": 2,
+                            "variable_name": "feed speed",
+                            "variable_units": "mm/min",
+                            "data_array": []
+                        },
+                        "color": "blue",
+                        "linewidth": 2.0,
+                        "linestyle": "-",
+                        "marker": "None",
+                        "markersize": 6.0,
+                        "markeredgewidth": 1.0,
+                        "markeredgecolor": "white",
+                        "markerfacecolor": "c",
+                        "markerfacecoloralt": "none",
+                        "label": "feed speed",
+                        "gapcolor": null,
+                        "fillstyle": "full",
+                        "antialiased": false,
+                        "dash_capstyle": "butt",
+                        "solid_capstyle": "butt",
+                        "dash_joinstyle": "round",
+                        "solid_joinstyle": "miter",
+                        "pickradius": 5.0,
+                        "drawstyle": "default",
+                        "markevery": null
+                    }
+                ],
+                "title": "Feed / Draw Speed",
+                "x_label": "time (s)",
+                "y_label": "speed (mm/min)",
+                "legend pos": "upper left",
+                "plot pos": [
+                    0,
+                    0
+                ]
+            },
+            [
+                {
+                    "x_serial": {
+                        "variable_number": 0,
+                        "variable_name": "time",
+                        "variable_units": "s",
+                        "data_array": []
+                    },
+                    "y_serial": {
+                        "variable_number": 1,
+                        "variable_name": "draw speed",
+                        "variable_units": "mm/min",
+                        "data_array": []
+                    },
+                    "color": "red",
+                    "linewidth": 2.0,
+                    "linestyle": "-",
+                    "marker": "None",
+                    "markersize": 6.0,
+                    "markeredgewidth": 1.0,
+                    "markeredgecolor": "red",
+                    "markerfacecolor": "yellow",
+                    "markerfacecoloralt": "none",
+                    "label": "draw speed",
+                    "gapcolor": null,
+                    "fillstyle": "full",
+                    "antialiased": false,
+                    "dash_capstyle": "butt",
+                    "solid_capstyle": "butt",
+                    "dash_joinstyle": "round",
+                    "solid_joinstyle": "miter",
+                    "pickradius": 5.0,
+                    "drawstyle": "default",
+                    "markevery": null
+                },
+                {
+                    "x_serial": {
+                        "variable_number": 0,
+                        "variable_name": "time",
+                        "variable_units": "s",
+                        "data_array": []
+                    },
+                    "y_serial": {
+                        "variable_number": 2,
+                        "variable_name": "feed speed",
+                        "variable_units": "mm/min",
+                        "data_array": []
+                    },
+                    "color": "blue",
+                    "linewidth": 2.0,
+                    "linestyle": "-",
+                    "marker": "None",
+                    "markersize": 6.0,
+                    "markeredgewidth": 1.0,
+                    "markeredgecolor": "white",
+                    "markerfacecolor": "c",
+                    "markerfacecoloralt": "none",
+                    "label": "feed speed",
+                    "gapcolor": null,
+                    "fillstyle": "full",
+                    "antialiased": false,
+                    "dash_capstyle": "butt",
+                    "solid_capstyle": "butt",
+                    "dash_joinstyle": "round",
+                    "solid_joinstyle": "miter",
+                    "pickradius": 5.0,
+                    "drawstyle": "default",
+                    "markevery": null
+                }
+            ]
+        ],
+        [
+            {
+                "lines": [
+                    {
+                        "x_serial": {
+                            "variable_number": 0,
+                            "variable_name": "time",
+                            "variable_units": "s",
+                            "data_array": []
+                        },
+                        "y_serial": {
+                            "variable_number": 3,
+                            "variable_name": "predicted radius",
+                            "variable_units": "mm",
+                            "data_array": []
+                        },
+                        "color": "green",
+                        "linewidth": 2.0,
+                        "linestyle": "-",
+                        "marker": "None",
+                        "markersize": 6.0,
+                        "markeredgewidth": 1.0,
+                        "markeredgecolor": "r",
+                        "markerfacecolor": "b",
+                        "markerfacecoloralt": "none",
+                        "label": "predicted diameter",
+                        "gapcolor": null,
+                        "fillstyle": "full",
+                        "antialiased": false,
+                        "dash_capstyle": "butt",
+                        "solid_capstyle": "butt",
+                        "dash_joinstyle": "round",
+                        "solid_joinstyle": "miter",
+                        "pickradius": 5.0,
+                        "drawstyle": "default",
+                        "markevery": null
+                    },
+                    {
+                        "x_serial": {
+                            "variable_number": 0,
+                            "variable_name": "time",
+                            "variable_units": "s",
+                            "data_array": []
+                        },
+                        "y_serial": {
+                            "variable_number": 4,
+                            "variable_name": "actual diameter",
+                            "variable_units": "mm",
+                            "data_array": []
+                        },
+                        "color": "magenta",
+                        "linewidth": 2.0,
+                        "linestyle": "-",
+                        "marker": "None",
+                        "markersize": 6.0,
+                        "markeredgewidth": 1.0,
+                        "markeredgecolor": "y",
+                        "markerfacecolor": "y",
+                        "markerfacecoloralt": "none",
+                        "label": "actual diameter",
+                        "gapcolor": null,
+                        "fillstyle": "full",
+                        "antialiased": false,
+                        "dash_capstyle": "butt",
+                        "solid_capstyle": "butt",
+                        "dash_joinstyle": "round",
+                        "solid_joinstyle": "miter",
+                        "pickradius": 5.0,
+                        "drawstyle": "default",
+                        "markevery": null
+                    }
+                ],
+                "title": "Predicted / Actual Diameter",
+                "x_label": "time (s)",
+                "y_label": "diameter (mm)",
+                "legend pos": "upper left",
+                "plot pos": [
+                    1,
+                    0
+                ]
+            },
+            [
+                {
+                    "x_serial": {
+                        "variable_number": 0,
+                        "variable_name": "time",
+                        "variable_units": "s",
+                        "data_array": []
+                    },
+                    "y_serial": {
+                        "variable_number": 3,
+                        "variable_name": "predicted radius",
+                        "variable_units": "mm",
+                        "data_array": []
+                    },
+                    "color": "green",
+                    "linewidth": 2.0,
+                    "linestyle": "-",
+                    "marker": "None",
+                    "markersize": 6.0,
+                    "markeredgewidth": 1.0,
+                    "markeredgecolor": "r",
+                    "markerfacecolor": "b",
+                    "markerfacecoloralt": "none",
+                    "label": "predicted diameter",
+                    "gapcolor": null,
+                    "fillstyle": "full",
+                    "antialiased": false,
+                    "dash_capstyle": "butt",
+                    "solid_capstyle": "butt",
+                    "dash_joinstyle": "round",
+                    "solid_joinstyle": "miter",
+                    "pickradius": 5.0,
+                    "drawstyle": "default",
+                    "markevery": null
+                },
+                {
+                    "x_serial": {
+                        "variable_number": 0,
+                        "variable_name": "time",
+                        "variable_units": "s",
+                        "data_array": []
+                    },
+                    "y_serial": {
+                        "variable_number": 4,
+                        "variable_name": "actual diameter",
+                        "variable_units": "mm",
+                        "data_array": []
+                    },
+                    "color": "magenta",
+                    "linewidth": 2.0,
+                    "linestyle": "-",
+                    "marker": "None",
+                    "markersize": 6.0,
+                    "markeredgewidth": 1.0,
+                    "markeredgecolor": "y",
+                    "markerfacecolor": "y",
+                    "markerfacecoloralt": "none",
+                    "label": "actual diameter",
+                    "gapcolor": null,
+                    "fillstyle": "full",
+                    "antialiased": false,
+                    "dash_capstyle": "butt",
+                    "solid_capstyle": "butt",
+                    "dash_joinstyle": "round",
+                    "solid_joinstyle": "miter",
+                    "pickradius": 5.0,
+                    "drawstyle": "default",
+                    "markevery": null
+                }
+            ]
+        ]
+    ],
+    "exit_gui": false,
+    "update_gui_plots": false,
+    "generate_gui_plots": false,
+    "validate_port_settings": false,
+    "obtain_serial_data": false,
+    "plot_serial_data": false,
+    "update_config_to_json": true,
+    "skip_to_beginning": false,
+    "gui": "requested",
+    "backend": "waiting",
+    "designated_author": "gui",
+    "valid_port": true
+}
