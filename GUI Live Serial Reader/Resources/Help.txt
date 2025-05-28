@@ -1,0 +1,74 @@
+HELP DOCUMENTATION
+App Name - GUI LIVE SERIAL READER
+Author - Matthew Spence
+
+HOW TO USE APP
+1. Launch the App
+Click "run" on menu_window.py from VS Code and wait a few seconds for it to boot up.
+
+2. Main Window
+If you do not have any configurations stored in configurations.json (i.e. that json file
+is empty) you will have to create a new configuration by clicking the button labelled
+"Create New Configuration". If you already have one or more configurations created then
+you can open one of those configurations by clicking on its name. Do not attempt to open
+multiple configurations or windows at once.
+
+3. Create New Configuration
+When you click the "Create New Configuration" button a small window will open up and
+prompt you to enter the name of your new configuration. If the name is a duplicate or
+too long, it will prevent you from entering that name. Once you have entered a valid
+name, hit return on your keyboard and the main configuration window will open with
+your new configuration. 
+
+4. Configuration Window
+In the configuration window there is a menu bar with several options located at the
+top, which is where you can edit your configuration's settings and control plotting.
+Below this menu bar is a blank area, which is where plots get displayed. 
+
+4a. File Dropdown
+The "File" tab on the menu bar opens up a drop down menu with a set of options meant
+to manage the configuration itself. These options are buttons labelled 
+"Rename Configuration", "Save", "Delete", and "Exit to Menu". The "Rename Configuration"
+opens up a tiny entry box where you can type a new name for your configuration. Hit enter
+to update the name to what you typed, or hit escape to close the entry box. All
+the same naming rules apply as when you first created its name. The "Save" option
+writes all of the configuration's settings into the program's memory
+(configurations.json). Once you save you can close the window or program and it will
+retain all the details about your config. If you do not save none of your changes will
+be kept. The "Delete" option removes the configuration everywhere from the program, and
+bring you back to the main menu. Once you press "Delete" removal will happen immediately
+so be careful. You will not be able to recover the configuration afterwards.
+
+4b. Serial Variables Dropdown
+The "Serial Variables" tab opens up a drop down menu with several options related to
+editing the serial variables attached to the configuration. The serial variables tell
+the program how to assign which values to which lines, plots, and also what names each
+value gets and what units they are supposed to be in. The dropdown menu reveals the
+options labelled "Add Variables", "Edit Variables", and "Delete Variables", which
+each open up their own smaller window. The "Add Variables" option allows you to add
+serial variables to the configuration. The number assigned to the serial variables
+determines which index of data it takes as its own values from the list of values
+generated from the serial data. You cannot create serial variables with duplicate numbers.
+The name simply allows you to clearly describe what that data point corresponds to.
+The units allows you to indicate how each data point is measured. You need to add at
+least one serial variable before you can create any lines or plots. You can either add the
+serial variable and return to the configuration window, or add it and continue adding
+more serial variables. The "Edit Variables" option allows you to modify the attributes
+of serial variables you have previously created. It will open a small window with a
+list of all the serial variables that exist in the config. By clicking on the name of
+a serial variable from this list, you can open another small window which allows you
+If you edit the variable number to be the same as another serial variable's number,
+those two serial variables will have their numbers swapped. If you change the units of
+the serial variable and it creates a unit conflict on a plot axis, the line containing
+the edited serial variable will be removed from that plot. You can either finish editing
+the serial variable which returns you to configuration window, or you can edit another
+serial variable once you are done. The option "Delete Variable" allows you to delete a
+serial variable by opening up a list of all the serial variables in the config. By clicking
+on the name of a serial variable you can delete it. Once it is deleted, any lines
+containing it will also be deleted, and if that creates any lineless plots those plots
+will be deleted.
+
+4c. Lines Dropdown
+The "Lines" tab opens up a drop down menu with options related to editing the lines stored
+by the configuration. The lines each take two serial variables; one for their x-data,
+and one for their y-data. 

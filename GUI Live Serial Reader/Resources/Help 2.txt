@@ -1,0 +1,139 @@
+HELP DOCUMENTATION
+App Name - GUI LIVE SERIAL READER
+Author - Matthew Spence
+
+HOW TO USE APP
+1. Launch the App
+If you are starting the app from vs code, open the folder as your project and
+click on the module "menu_window.py", then in the top right corner click the run button
+and wait a few seconds for the app to boot up. The app can take longer or shorter
+times to start up depending on which computer is being used. If it takes longer than a
+minute there is likely an issue preventing it from starting. If you have installed
+the app to your desktop, then simply double-click on the desktop shortcut like normal.
+
+
+2. Main Window
+If you do not have any configurations stored in configurations.json (i.e. the json file
+is empty) you will have to create a new configuration by clicking on the button labelled
+"Create New Configuration". If you already have one or more configurations created then
+you can open one of those configurations by clicking on its name. Do not attempt to open
+multiple configurations or windows at once. If you do open up more than one
+configuration at once immediately close the app and restart it.
+
+3. Create New Configuration
+When you click the "Create New Configuration" button a small window will open up and
+prompt you to enter the name of your new configuration. If the name is a duplicate or
+too long, it will prevent you from entering that name. The name must only contain letters,
+numbers, spaces, and the following symbols: "(){}^:;|/+*-=<>,.~". If you only enter spaces
+the name will be invalid. Once you have entered a valid name, hit return on your keyboard
+and the main configuration window will open with your new configuration. If you press the
+cancel button, the create configuration window will close and you will be returned to the
+menu window.
+
+4. Configuration Window
+The configuration window is where you view live serial data plotting. This window is also
+where you edit your configuration. You can edit the serial variables, the lines, the plots,
+the com port number, the baud rate, and also control whether data is being collected and
+plotted. All of these options are accessed by drown downs from a menu bar located at the
+top of the window. Each of these drop downs and their options will be explained in detail
+individually in this document.
+
+5. File
+The file tab in the menu bar provides access to core configuration and session management
+options. It allows you to rename, save, or delete the current configuration as well as
+exiting to the main menu. 
+
+5a. Rename Configuration
+By clicking on "rename configuration" a small text box will appear near where the button
+was. You can type a new name for your configuration here and hit enter to make the
+change once you are finished. If you hit escape while typing into the box it will
+disappear. The naming rules are the exact same as when you create a new configuration,
+and can be found under section 3 of this document. Once you enter a new configuration
+name, you don't need to hit save because this specific change is instantly saved.
+
+5b. Save
+By clicking on "save" you update the configurations.json file to reflect all the current
+settings / changes made to your configuration. With the exception of the configuration
+name, all changes made to the configuration will be lost when you close the configuration
+window or exit the program unless you hit save. You do not need to hit save after
+creating a new configuration because it is saved to configurations.json the moment you
+create it.
+
+5c. Delete
+By clicking the "delete" button you will instantly delete the configuration from the entire
+program. The program will not ask you if you are sure about deleting the configuration, it
+will just do it, so be careful not to click it by accident. Once you click delete you will
+not be able to recover your configuration and potentially lose the data you plotted too.
+
+5d. Exit to Menu
+By clicking "exit to menu" your configuration window will close without saving and open up
+the starting main menu. If you have made changes to your configuration that you wish to
+quickly undo, hitting this option will allow you to undo them all at once. If you exit
+while plotting the data collection will stop and the csv file that comes with the program
+will have its contents erased.
+
+6. Serial Variables
+The serial variables tab allows you to modify objects stored by the configuration called
+"serial variables". These serial variables are also stored by line objects in the
+configuration too. Serial variables allow you to control how the list of numbers
+periodically obtained from the com port are interpreted and how they get plotted. Serial
+variables all have a number, a name, and units of measurement. The number of a serial
+variable tells it which index of the obtained data to extract data values from. Serial
+variables must never have the same number as each other, and these numbers must also
+be positive integers. The name of a serial variable simply tells us what the data points
+collected by that serial variable correspond to or what they mean. The name can contain
+only letters, numbers, spaces, and the following characters: "(){}^:;|/+*-=<>,.~". 
+Duplicate names between serial variables is allowed. The units for a serial variable
+simply tell us how those data points were measured. Unlike the serial variable name, 
+the entry for units may contain any characters you like.  
+
+6a. Add Variables
+By clicking the "add variables" button, a small window will open where you can create a
+new serial variable. After entering a number, name, and units for a serial variable,
+you can finish adding it and return directly to the configuration window, or directly
+add another serial variable. See section 6 for the naming rules of each entry.
+
+6b. Edit Variables
+By clicking the "edit variables" button, a small window with a list of all the serial
+variables currently stored in the configuration will open up. By clicking on the name
+of a serial variable from that list, you will open another small window which will allow
+you to edit the serial variable you just clicked on. You can edit its number, name, and
+units. If you change its number to one that is already in use by another serial
+variable, then those two serial variables will swap their numbers. If you edit the units
+of a serial variable then it can cause a situation where the lines on a plot suddenly
+have mismatching units on one or more of their axes. When such a situation occurs the
+line(s) containing the serial variable whose units you edited will be removed from the
+plot(s) it gets plotted on, but not if it is the only line of a plot. You can either
+finish editing a variable and directly return to the configuration window or return back
+to the list of serial variables in the configuration and edit another one. See section
+6 for the naming rules of each entry.
+
+6c. Delete Variables
+By clicking the "delete variables" button, a small window with a list of all the serial
+variables currently stored in the configuration will open up. By clicking on the name
+of a serial variable from that list, you will be able to instantaneously delete that
+serial variable from the entire configuration. If a line contains the deleted serial
+variable as either its x or y-serial, then that line will be immediately deleted as
+well. Additionally, if there is a plot where its only line is one containing the
+deleted serial variable, then after the line gets deleted, the plot will also be
+deleted since it won't have any lines anymore. To stop deleting serial variables, simply
+close the delete variables window like normal.
+
+7. Lines
+The lines tab allows you to edit the line objects stored in the configuration. The
+options under this tab are "add lines", "edit lines", and "delete lines". Each line
+object is an instance of the matplotlib class called "Line2D", which means that its data
+is structured identically to matplotlib lines, and that line objects accept all the same
+attributes and methods as the ones that matplotlib lines accept. Unlike matplotlib lines
+however, the line objects in this program have two additional attributes. The first
+attribute for each line is an x-serial, and the second attribute for each line is a
+y-seiral. Both of these attributes are serial variable objects (see section 6 for serial
+variable objects). These are important details because it means you can make advanced
+changes to the lines in your configuration by directly modifying them in the
+configurations.json file. A brief description of each option under this tab can be found
+in the following sub-sections.
+
+7a. Add Lines
+By clicking the "add lines" button, a small window will be opened where you can add
+line objects to the configuration. If no serial variables have been created yet, then
+you will be unable to add any lines until you do. 
